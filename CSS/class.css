@@ -1,0 +1,119 @@
+.menu{
+    float:left;
+    width: 20vh;
+    background-color: black;
+    text-align: left;
+    padding-left:2% ;
+    position: sticky;
+    display: block;
+    z-index: 1000;
+}
+.text{
+    color:white;
+}
+.text:hover{
+    color:rgb(28, 175, 180);
+}
+.text1{
+    color:white;
+}
+.text1:hover{
+    color:rgb(8, 226, 117);
+}
+.text2{
+    color:white;
+}
+.text2:hover{
+    color:rgb(86, 15, 134);
+}
+.space{
+    justify-content: space-between
+}
+.arti1{
+    float:right;
+    width: 70%;
+    height: 55vh;
+}
+.arti2{
+    float:right;
+    width: 80%;
+}
+.espace{
+    height: 20vh;
+}
+.esp{
+    height: 1.5vh;
+}
+.gris{
+    color: rgb(53, 53, 53);
+}
+.noir{
+    color: black;
+}
+.bloc{
+    width: 100%;
+    background-color: tomato;
+    border: 3px solid;
+    border-color: black;
+    border-width:2px;
+}
+.box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px 2em;
+}
+.box :first-child {
+      align-self: center;
+}
+.comm{
+    display: flex;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    padding: 30px;
+}
+.center{
+    margin: auto;
+    width: 70%;
+    height: 5%;
+    border-radius: 3px;
+}
+.img{
+    width: 50%;
+}
+.page{
+    display: flex;
+}
+#bg {
+    display:block;
+    width: 70%;
+    left:0;
+    top:0;
+    padding:0;
+    margin:0;
+    border-radius: 7px;
+}
+.Affiche{
+    margin-top: 10%;
+    width: 80%;
+    border-radius: 5px;
+    border-color: black;
+}
+.comm{
+    display: flex;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0 auto;
+    width: 55%;
+    border-radius: 1px;
+    background-color: #818181c5;
+    padding: 30px;
+}
+.nom{
+    color:rgb(255, 255, 255);
+}
+.nom:hover{
+    color: rgb(28, 175, 180);
+}

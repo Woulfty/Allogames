@@ -10,7 +10,7 @@
             return false;
         }
     }
-
+/*
     //fonction qui affiche le nom et l'image de profil de l'utilisateur
     function user(){
         ?>
@@ -28,4 +28,5 @@
                 ?>
             </a>
     }
+*/
 ?>
