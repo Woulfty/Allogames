@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "fonction.php";
+    if(check()){
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,7 +24,7 @@
                     <p>
                         <?php
                             //sélection du nombre d'utilisateur
-                            $nb = $MaBase->query("SELECT COUNT(*) FROM user");
+                            $nb = $MaBase->query("SELECT COUNT(*) FROM User");
                             $gens = $nb->fetch();
 
                             echo '<h1>Déjà '.$gens['COUNT(*)'].' membres !</h1>';
@@ -52,17 +53,16 @@
                     <?php
                         if(isset($_POST['nom'])){
                             //selection des users 
-                            $Result = $MaBase->query("SELECT * FROM `User` WHERE `nom`='".$_POST['nom']."' AND `MDP` = '".$_POST['MDP']."'");
+                            $Result = $MaBase->query("SELECT * FROM `User` WHERE `pseudo`='".$_POST['nom']."' AND `MDP` = '".$_POST['MDP']."'");
                             if($Result->rowCount()>0){
-                                header("location: index.php");
                                 $tab = $Result->fetch();
                                 //si il existe et que le mot de passe correspond -> connection
                                 $_SESSION["Logged"] = true;
                                 $_SESSION["idUser"] = $tab['id'];
                                 $_SESSION["admin"] = $tab['admin'];
                                 //réponse a la connection
-                                return true;
-                                
+                                echo '<meta http-equiv="refresh" content="0">';
+                            
                                 
                             }else{
                                 //sinon affiche un msg d'erreur
@@ -77,5 +77,10 @@
             </div>
         </div>
     </div>
+    <?php
+    }else{
+        header("location: index.php");
+    }
+    ?>
 </body>
 </html>

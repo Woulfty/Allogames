@@ -4,9 +4,9 @@
         <?php
             if(check()){
                 ?>
-                    <h2>
+                    <h5>
                         <a class="text" href="connexion.php">Connexion</a>
-                    </h2>
+                    </h5>
                 <?php
             }else{
                 //selection dans ma base de l'utilisateur
@@ -17,48 +17,59 @@
                     <a href="compte.php">
                         <?php
                             //Affiche le nom de l'utilisateur a la place du bouton
-                            echo '<h2 class="text">'.$utilisateurs['nom'].'</h2>';
+                            echo '<h2 class="text">'.$utilisateurs['pseudo'].'</h2>';
                         ?>
                     </a>
                 <?php
             }
             ?>
-                <h2>
+                <h6>
+                    <!--bouton pour aller sur la page d'acceuil-->
                     <a class="text" href="index.php">Accueil</a>
-                </h2>
+                </h6>
             <?php
 
             if(check()){
             
             }else{
+                //si l'utilisateur est connecter
                 if($_SESSION['admin'] == 'true'){
+                    //si l'utilisateur est Admin
                     ?>
-                        <h2>
+                        <h5>
+                            <!--Bouton vers la page ajoutjeu.php-->
                             <a class="admin" href="ajoutjeu.php">Jeux</a>
                             <div class="esp"></div>
                             <div class="esp"></div>
+                            <!--Bouton vers la page users.php-->
                             <a class="admin" href="users.php">Utilisateurs</a>
-                        </h2>
+                            <div class="esp"></div>
+                            <div class="esp"></div>
+                            <!--Bouton vers la page comm.php-->
+                            <a class="admin" href="comm.php">Commentaires</a>
+                        </h5>
                     <?php
                 }
             }
-
-                //si dans ma base l'utilisateur est Admin alors il a accés a un bouton qui méne vers la page admin
-                   
+            //séléction dans la base Game des types de jeux
             $gameType = $MaBase->query("SELECT type FROM `Game` GROUP BY type");
+            //affiche tout les types de jeu
             foreach ($gameType as $type => $data){ 
             ?>
-                <h2>    
+                <h5>    
                     <div class="esp"></div>
+                    <!--affiche le type dans un bontono vers la page liste.php-->
                     <a class="text" href="liste.php?TypeName=<?= $data['type']; ?>"><?= $data['type']; ?></a>
                     <div class="esp"></div>
-                </h2>
+                </h5>
             <?php 
             } 
 
             if(check()){
-                echo '<h2 class="text3"> U ω U </h2>';
+                //Affiche U ω U
+                echo '<h5 class="text3"> U ω U </h5>';
             }else{
+                //finction de déconnexion
                 deco();
                 ?>
                     <div class="esp"></div>

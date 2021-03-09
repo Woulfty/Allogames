@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include "fonction.php";
+    session_start();   // ouverture de la session
+    include "fonction.php"; //appel de la page de fonction 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,26 +15,26 @@
 <body>
     <div class="space">
         <?php
-            include "menu.php"
+            include "menu.php" //appel le menu
         ?>
         <div class="arti1">
 
-            <img src='IMG/bg/1.jpg' id="bg" style="display: block;">
-            <img src='IMG/bg/2.jpg' id="bg" style="display: none;" >
-            <img src='IMG/bg/3.jpg' id="bg" style="display: none;" >
-            <img src='IMG/bg/4.jpg' id="bg" style="display: none;" >
-            <img src='IMG/bg/5.jpg' id="bg" style="display: none;" >
-            <img src='IMG/bg/6.jpg' id="bg" style="display: none;" >
+            <img src='IMG/bg/1.jpg' id="bg" style="display: block;">  <!-- image 1-->
+            <img src='IMG/bg/2.jpg' id="bg" style="display: none;" >  <!-- image 2-->
+            <img src='IMG/bg/3.jpg' id="bg" style="display: none;" > <!-- image 3-->
+            <img src='IMG/bg/4.jpg' id="bg" style="display: none;" > <!-- image 4-->
+            <img src='IMG/bg/5.jpg' id="bg" style="display: none;" > <!-- image 5-->
+            <img src='IMG/bg/6.jpg' id="bg" style="display: none;" > <!-- image 6-->
 
             <script type="text/javascript">
-
+            // image deffilante 
                 I = 0 ;
-                Imax = document.images.length - 1 ;
-                setTimeout(suivante, 3000) ;
+                Imax = document.images.length - 1 ;  
+                setTimeout(suivante, 3000) ;   // definition du temps de passage des images         
     
                 function suivante(){
-                    document.images[I].style.display = "none" ;
-                    if ( I < Imax )
+                    document.images[I].style.display = "none" ; 
+                    if ( I < Imax )  //boucle defilante 
                         I++;
                     else
                         I=0;    
@@ -46,37 +46,34 @@
         <div class="arti3">
             <div>
                 <u>
-                    <h1 class="gris">Tendances du moment :</h1>
+                    <h1 class="gris">Tendances du moment :</h1>  <!--titre en gris-->
                 </u>
                 <div class="esp"></div>
                 <div class="box">
                     <?php
-                        /*
+                        
                         $CommResult = $MaBase->query("SELECT COUNT(*), IDJeu, nom FROM `ArticleLike` INNER JOIN Game ON ArticleLike.IDJeu = Game.id GROUP BY IDJeu ORDER BY `COUNT(*)` DESC LIMIT 3");
-                        While($don = $CommResult->fetch()){
-                            ?>
-                                <div class="bloc">
-                                    <?php
-                                        echo "<script>document.body.style.backgroundImage = \"url('IMG/Games/".$this->_id."_background.jpg')\"</script>";
-                                        print_r($this->test);
-                                    ?>
-                                    <a class="comm" href="jeux.php?GameName=<?= $don['IDJeu']; ?>">
-                                        <div class="img">
+                        // selectionne le id du jeux le nom et sa fait une jointure avec articlelike et game
+                        While($don = $CommResult->fetch()){   // boucle while qui affiche les 3 meuilleur jeux
+                            ?>        
+                                <div class="center">
+                                    <a class="zone1" href="jeux.php?GameName=<?= $don['IDJeu']; ?>"> 
+                                        <div class="">
                                         <!--met l'affiche du jeu selectioné dans la base-->
-                                            <img class="Affiche" src="images/Nouveaudossier/<?= $don['IDJeu']; ?>_Affiche.jpg" alt="Affiche">
+                                            <img class="Affiche2" src="IMG/Games/<?= $don['IDJeu']; ?>_Affiche.jpg" alt="Affiche"> <!--affiche l'image du jeu-->
                                         </div>
-                                        <div class="center">
+                                        <div class="nom">
                                             <?php
                                             //affiche les commentaires et le pseudo de la persone qui a posté un commentaire
-                                                echo '<h1 class="color3">'.$don['nom'].'</h1>';
-                                                echo '<h1 class="color3">'.$don['COUNT(*)'].'👍</h1>';
+                                                echo '<h1 class="">'.$don['nom'].'</h1>'; //affiche le nom du jeu
+                                                echo '<h1 class="">'.$don['COUNT(*)'].'❤️</h1>'; //affiche le mombre de coeur
                                             ?>
                                         </div>
                                     </a>
                                 </div>
                             <?php
                         }
-                        */
+                        
                     ?>
                 </div>
                 <u>
@@ -85,7 +82,7 @@
                 <div class="esp"></div>
                 <?php
 
-                    $CommResult = $MaBase->query("SELECT * FROM `Game`");
+                    $CommResult = $MaBase->query("SELECT * FROM `Game` ORDER BY Game.nom ASC "); // classe les jeux par nom
                     While($don = $CommResult->fetch()){
                         ?>
                             <div class="center">
