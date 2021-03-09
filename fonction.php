@@ -1,7 +1,6 @@
 <?php
     //connection a la base
-    $MaBase = new PDO('mysql:host=localhost; dbname=site; charset=utf8','root');
-    $bdd = $MaBase;
+    $MaBase = new PDO('mysql:host=192.168.65.206; dbname=utilisateurs; charset=utf8','root', 'root');
 
     //fonction pour vérifier si l'utilisateur est bien connecter
     function check() {
@@ -16,7 +15,7 @@
     function form(){
         if(isset($_POST['nom'])){
             //selection des users 
-            $Result = $MaBase->query("SELECT * FROM `User` WHERE `nom`='".$_POST['nom']."' AND `MDP` = '".$_POST['MDP']."'");
+            $Result = $MaBase->query("SELECT * FROM `User` WHERE `pseudo`='".$_POST['nom']."' AND `MDP` = '".$_POST['MDP']."'");
             if($Result->rowCount()>0){
 
                 $tab = $Result->fetch();
@@ -32,7 +31,7 @@
             }
         }
     }
-    
+    //fonction de déconnection
     function deco(){
         //deconection
         ?>
@@ -40,14 +39,15 @@
                 <input class="deco" type="submit" name="deco" value="Déconnexion">
             </form>
         <?php
-
+        //déconnection
         if(isset($_POST["deco"])){
             $_SESSION["Logged"] = false;
             session_destroy();
             header("Location: index.php");
+            echo '<meta http-equiv="refresh" content="0">';
         }
     }
-
+//fonction de session  pour les utilisateur admin
     function admin(){
         if($_SESSION && ( $_SESSION["admin"] == true )) {
             return false;

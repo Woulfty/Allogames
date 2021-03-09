@@ -19,26 +19,29 @@
 <body>
     <div class="space">
         <?php
+            //inclusion u menu
             include "menu.php"
         ?>
         <div class="arti3">
 
         <u>
             <?php
+                //affiche le type du jeu
                 echo '<h1>'.$_GET['TypeName'].' :</h1>';
             ?>
         </u>
         
         <?php
-
+            //sélection des jeu via leur type
             $CommResult = $MaBase->query("SELECT * FROM `Game` WHERE `type` = '".$_GET['TypeName']."'");
-            
+                //boucle qui affiche les jeu
                 While($don = $CommResult->fetch()){
                     ?>
                         <div class="center">
+                            <!--affiche le nom du jeu-->
                             <a  class="zone" href="jeux.php?GameName=<?php echo $_POST['GameName']= $don['id']; ?>">
                                 <div class="img1">
-                                <!--met l'affiche du jeu selectioné dans la base-->
+                                <!--met l'affiche du jeu selectioné-->
                                     <img class="Affiche" src="IMG/Games/<?php echo $don['id']; ?>_Affiche.jpg" alt="Affiche">
                                 </div>
                                 <div class="center nom">

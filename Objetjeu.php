@@ -23,7 +23,7 @@
             $this->_type = $query["type"];
             $this->_text = $query["texte"];
 
-            //$this->_nbvue = $nbrlike->rowCount();
+            $this->_nbvue = $nbrlike->rowCount();
 
             $this->_BDD = $bdd;
 
@@ -46,7 +46,7 @@
                 <?php
                     echo '<h1>'.$this->_nom.'</h1>';
 
-                    //echo '<h1>'.$this->_nbvue.'👍</h1>';
+                    echo '<h1>'.$this->_nbvue.'❤️</h1>';
 
                 ?>
                 <div class="espace40px"></div>
@@ -77,7 +77,7 @@
                     }
                 }
         }
-
+        //fonction des commentaires
         public function commentaires(){
             ?>
                 <u>
@@ -85,7 +85,7 @@
                 </u>
             <?php
                 //selectionne tout les commentaires du jeu et les affiches par ancienneté
-                $CommResult = $this->_BDD->query("SELECT User.nom, User.pdp, commentaires.commentaire FROM User, commentaires 
+                $CommResult = $this->_BDD->query("SELECT User.pseudo, User.pdp, commentaires.commentaire FROM User, commentaires 
                                                 WHERE 
                                                     User.id = commentaires.iduser
                                                 AND
@@ -96,7 +96,7 @@
                     <div class="flex">
 
                         <div class="imguser">
-
+                            <!--affiche l'image de profil de l'utilisateur-->
                             <img class="imguser" src="IMG/Users/<?php echo $don['pdp']?>">
 
                         </div>
@@ -104,7 +104,7 @@
 
                             <?php
                                 //affiche les commentaires et le pseudo de la persone qui a posté un commentaire
-                                echo '<h3>'.$don['nom'].' :</h3>';
+                                echo '<h3>'.$don['pseudo'].' :</h3>';
                                 echo '<h4>'.$don['commentaire'].'</h4>';
                             ?>
 
@@ -114,23 +114,25 @@
                     <?php
                 }
         }
-
+        //fonction pour like un jeu
         public function Like(){
             ?>
             <form method="post">
-                <input class="poster" type="submit" name='+1' value="👍">
+                <input class="poster" type="submit" name='+1' value="❤️">
             </form>
 
             <?php
-
+                //si le bouton "+1" est cliqué
                 if(isset($_POST["+1"])) {
                     
                 
                     $hasLike = $this->_BDD->query("SELECT * FROM ArticleLike WHERE IDUser = ".$_SESSION["idUser"]." AND IDJeu =".$this->_id."")->fetch();
- 
+                    //séléction des like via l'id de l'utilisateur dans les jeux
                     if ($hasLike)
+                        //si l'utilisateur a déja like le jeu suppression du like
                         $this->_BDD->query("DELETE FROM ArticleLike WHERE IDUser = ".$_SESSION["idUser"]." AND IDJeu =".$this->_id);                    
                     else
+                    //si l'utilisateur n'a pas déja like le jeu ajout d'un like en BDD
                         $this->_BDD->query("INSERT INTO ArticleLike(IDUser, IDJeu) VALUES(".$_SESSION["idUser"].", $this->_id)");
                 
                     echo '<meta http-equiv="refresh" content="0">';
