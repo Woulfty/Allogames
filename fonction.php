@@ -1,6 +1,6 @@
 <?php
     //connection a la base
-    $MaBase = new PDO('mysql:host=192.168.65.206; dbname=utilisateurs; charset=utf8','root', 'root');
+    $MaBase = new PDO('mysql:host=localhost; dbname=utilisateurs; charset=utf8','root', '');
 
     //fonction pour vérifier si l'utilisateur est bien connecter
     function check() {

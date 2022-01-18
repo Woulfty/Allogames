@@ -70,9 +70,6 @@
                             }
                         }
                     ?>
-                    <div class="gif">
-                        <img class="gif" src="IMG/Backgrounds/gif02.gif">
-                    </div>
                 </form>
             </div>
         </div>
